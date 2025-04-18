@@ -28,6 +28,14 @@ public class AuthController {
             .body(authService.register(signupRequest, UserRole.USER));
     }
 
+    @PostMapping("/admin-signup")
+    public ResponseEntity<SignupResponse> adminSignup(
+        @Valid @RequestBody SignupRequest signupRequest
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(authService.register(signupRequest, UserRole.ADMIN));
+    }
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(
         @Valid @RequestBody LoginRequest loginRequest
