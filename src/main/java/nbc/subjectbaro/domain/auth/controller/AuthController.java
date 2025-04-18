@@ -2,7 +2,9 @@ package nbc.subjectbaro.domain.auth.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import nbc.subjectbaro.domain.auth.dto.request.LoginRequest;
 import nbc.subjectbaro.domain.auth.dto.request.SignupRequest;
+import nbc.subjectbaro.domain.auth.dto.response.LoginResponse;
 import nbc.subjectbaro.domain.auth.dto.response.SignupResponse;
 import nbc.subjectbaro.domain.auth.service.AuthService;
 import nbc.subjectbaro.domain.user.entity.UserRole;
@@ -24,5 +26,13 @@ public class AuthController {
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(authService.register(signupRequest, UserRole.USER));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(
+        @Valid @RequestBody LoginRequest loginRequest
+    ) {
+        return ResponseEntity.status(HttpStatus.OK)
+            .body(authService.login(loginRequest));
     }
 }
