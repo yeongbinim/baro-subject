@@ -1,6 +1,7 @@
 package nbc.subjectbaro.config;
 
 import lombok.RequiredArgsConstructor;
+import nbc.subjectbaro.config.security.CustomAccessDeniedHandler;
 import nbc.subjectbaro.config.security.JwtAuthenticationFilter;
 import nbc.subjectbaro.domain.common.properties.JwtProperties;
 import nbc.subjectbaro.domain.common.util.JwtUtil;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtUtil jwtUtil;
+    private final CustomAccessDeniedHandler accessDeniedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -28,7 +30,11 @@ public class SecurityConfig {
                 session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/signup", "/admin-signup", "/login").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
+            )
+            .exceptionHandling(exception -> exception
+                .accessDeniedHandler(accessDeniedHandler)
             )
             .addFilterBefore(new JwtAuthenticationFilter(jwtUtil),
                 UsernamePasswordAuthenticationFilter.class);

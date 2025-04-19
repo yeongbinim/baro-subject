@@ -6,7 +6,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nbc.subjectbaro.domain.common.util.JwtUtil;
@@ -44,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(userDetails, null,
-                        Collections.emptyList());
+                        userDetails.getAuthorities());
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (Exception e) {

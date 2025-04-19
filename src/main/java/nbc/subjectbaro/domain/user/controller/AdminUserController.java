@@ -1,7 +1,6 @@
 package nbc.subjectbaro.domain.user.controller;
 
 import lombok.RequiredArgsConstructor;
-import nbc.subjectbaro.domain.common.annotation.AdminCheck;
 import nbc.subjectbaro.domain.user.dto.response.UpdateRoleResponse;
 import nbc.subjectbaro.domain.user.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,6 @@ public class AdminUserController {
 
     private final UserService userService;
 
-    @AdminCheck
     @PatchMapping("/{userId}/roles")
     public ResponseEntity<UpdateRoleResponse> giveAdminRole(
         @PathVariable Long userId
