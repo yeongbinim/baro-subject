@@ -43,4 +43,10 @@ public class MemoryUserRepository implements UserRepository {
     public Optional<User> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
+
+    @Override
+    public void clear() {
+        store.clear();
+        sequence.set(0);
+    }
 }
