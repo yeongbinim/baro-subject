@@ -14,7 +14,7 @@ public enum ExceptionType {
         "@Auth와 AuthUser 타입은 함께 사용되어야 합니다."),
 
     //Auth
-    AUTH_CREDENTIALS_INVALID(HttpStatus.BAD_REQUEST, "INVALID_CREDENTIALS",
+    AUTH_CREDENTIALS_INVALID(HttpStatus.UNAUTHORIZED, "INVALID_CREDENTIALS",
         "아이디 또는 비밀번호가 올바르지 않습니다."),
     AUTH_TOKEN_NOT_FOUND(HttpStatus.BAD_REQUEST, "TOKEN_NOT_FOUND", "토큰을 찾을 수 없습니다."),
 
