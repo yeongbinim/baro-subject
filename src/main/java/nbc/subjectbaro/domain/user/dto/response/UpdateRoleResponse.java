@@ -18,7 +18,7 @@ public record UpdateRoleResponse(
         );
     }
 
-    private record RoleResponse(
+    public record RoleResponse(
         UserRole role
     ) {
 

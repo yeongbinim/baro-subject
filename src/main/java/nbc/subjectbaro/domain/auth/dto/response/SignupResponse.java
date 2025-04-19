@@ -18,7 +18,7 @@ public record SignupResponse(
         );
     }
 
-    private record RoleResponse(
+    public record RoleResponse(
         UserRole role
     ) {
 
