@@ -2,8 +2,6 @@ package nbc.subjectbaro.domain.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import nbc.subjectbaro.domain.common.annotation.AdminCheck;
-import nbc.subjectbaro.domain.common.annotation.Auth;
-import nbc.subjectbaro.domain.common.dto.AuthUser;
 import nbc.subjectbaro.domain.user.dto.response.UpdateRoleResponse;
 import nbc.subjectbaro.domain.user.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -23,7 +21,6 @@ public class AdminUserController {
     @AdminCheck
     @PatchMapping("/{userId}/roles")
     public ResponseEntity<UpdateRoleResponse> giveAdminRole(
-        @Auth AuthUser authUser,
         @PathVariable Long userId
     ) {
         return ResponseEntity.status(HttpStatus.OK)
