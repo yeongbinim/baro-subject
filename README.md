@@ -24,6 +24,8 @@ EC2에서 실행 중인 API의 엔드포인트는 `http://3.34.42.209:8080` 이�
 
 <div align="center"><img width="500" src="https://github.com/user-attachments/assets/11de46d5-d725-4a19-834c-7e4614062090" /><br/><a href="http://3.34.42.209:8080/swagger-ui/index.html">http://3.34.42.209:8080/swagger-ui/index.html</a></div>
 
+<br/>
+
 과제 테스트를 위한 시나리오는 다음과 같습니다.
 
 1. `/signup`을 통해 일반 사용자로 회원가입을 합니다.
